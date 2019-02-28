@@ -183,6 +183,35 @@ namespace KatlaSport.Services.HiveManagement
             var hiveSectionItems = dbHiveSections[0].Items.Where(i => i.Product.CategoryId == categoryId && i.HiveSectionId == hiveSectionId);
 
             return hiveSectionItems.Select(i => Mapper.Map<ProductListItem>(i.Product)).ToList();
+
+            //new model with quantity required
+        }
+
+        public async Task<List<ProductListItem>> GetHiveSectionCategoryAvailableProductsAsync(int hiveSectionId, int categoryId)
+        {
+            var dbHiveSections = await _context.Sections.Where(s => s.Id == hiveSectionId).ToArrayAsync();
+
+            if (dbHiveSections.Length == 0)
+            {
+                throw new RequestedResourceNotFoundException();
+            }
+
+            var dbCategories = await _context.Categories.Where(c => c.ProductCategoryId == categoryId).ToArrayAsync();
+
+            if (dbCategories.Length == 0)
+            {
+                throw new RequestedResourceNotFoundException();
+            }
+
+            var hiveSectionItems = dbHiveSections[0].Items.Select(i => i.ProductId).ToList();
+            var hiveSectionAvailableItems = dbCategories[0].Category.Products.Where(p => !hiveSectionItems.Contains(p.Id)).ToList();
+
+            if (hiveSectionAvailableItems.Count == 0)
+            {
+                return null;
+            }
+
+            return hiveSectionItems.Select(i => Mapper.Map<ProductListItem>(i)).ToList();
         }
     }
 }
