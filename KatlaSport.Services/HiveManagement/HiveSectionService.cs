@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using KatlaSport.DataAccess;
 using KatlaSport.DataAccess.ProductStoreHive;
+using KatlaSport.Services.ProductManagement;
 using DbHiveSection = KatlaSport.DataAccess.ProductStoreHive.StoreHiveSection;
 
 namespace KatlaSport.Services.HiveManagement
@@ -144,6 +145,44 @@ namespace KatlaSport.Services.HiveManagement
                 dbHiveSection.LastUpdatedBy = _userContext.UserId;
                 await _context.SaveChangesAsync();
             }
+        }
+
+        /// <inheritdoc/>
+        public async Task<List<ProductCategoryListItem>> GetHiveSectionCategoriesAsync(int hiveSectionId)
+        {
+            var dbHiveSections = await _context.Sections.Where(s => s.Id == hiveSectionId).ToArrayAsync();
+
+            if (dbHiveSections.Length == 0)
+            {
+                throw new RequestedResourceNotFoundException();
+            }
+
+            var dbHiveSectionCategories = dbHiveSections[0].Categories.ToList();
+            var hiveSectionCategories = dbHiveSectionCategories.Select(hsc => Mapper.Map<ProductCategoryListItem>(hsc.Category)).ToList();
+
+            return hiveSectionCategories;
+        }
+
+        /// <inheritdoc/>
+        public async Task<List<ProductListItem>> GetHiveSectionCategoryProductsAsync(int hiveSectionId, int categoryId)
+        {
+            var dbHiveSections = await _context.Sections.Where(s => s.Id == hiveSectionId).ToArrayAsync();
+
+            if (dbHiveSections.Length == 0)
+            {
+                throw new RequestedResourceNotFoundException();
+            }
+
+            var dbCategories = await _context.Categories.Where(c => c.ProductCategoryId == categoryId).ToArrayAsync();
+
+            if (dbCategories.Length == 0)
+            {
+                throw new RequestedResourceNotFoundException();
+            }
+
+            var hiveSectionItems = dbHiveSections[0].Items.Where(i => i.Product.CategoryId == categoryId && i.HiveSectionId == hiveSectionId);
+
+            return hiveSectionItems.Select(i => Mapper.Map<ProductListItem>(i.Product)).ToList();
         }
     }
 }

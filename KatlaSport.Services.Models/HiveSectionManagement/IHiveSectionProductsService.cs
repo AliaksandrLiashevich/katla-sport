@@ -1,24 +1,23 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using KatlaSport.Services.ProductManagement;
+﻿using System.Threading.Tasks;
 
 namespace KatlaSport.Services.HiveSectionManagement
 {
     public interface IHiveSectionProductsService
     {
         /// <summary>
-        /// Gets a list of hive section categories.
+        /// Set approved status with the following values: true or false
         /// </summary>
-        /// <param name="hiveSectionId">A hive section identifier.</param>
-        /// <returns>A <see cref="Task{List{HiveSectionListItem}}"/>.</returns>
-        Task<List<ProductCategoryListItem>> GetHiveSectionCategoriesAsync(int hiveSectionId);
+        /// <param name="storeItemId">A store item identifier</param>
+        /// <param name="approvedStatus">bool value</param>
+        /// <returns>A <see cref="Task"/></returns>
+        Task SetApprovedStatusAsync(int storeItemId, bool approvedStatus);
 
         /// <summary>
-        /// Gets a list of hive section category products.
+        /// Set deleted status with the following values: true or false
         /// </summary>
-        /// <param name="hiveSectionId">A hive section identifier.</param>
-        /// <param name="categoryId">A category identifier.</param>
-        /// <returns>A <see cref="Task{List{ProductListItem}}"/>.</returns>
-        Task<List<ProductListItem>> GetHiveSectionCategoryProductsAsync(int hiveSectionId, int categoryId);
+        /// <param name="storeItemId">A store item identifier</param>
+        /// <param name="deletedStatus">bool value</param>
+        /// <returns>A <see cref="Task"/></returns>
+        Task SetDeletedStatusAsync(int storeItemId, bool deletedStatus);
     }
 }
