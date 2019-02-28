@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KatlaSport.Services.ProductManagement;
 
 namespace KatlaSport.Services.HiveManagement
 {
@@ -57,5 +58,20 @@ namespace KatlaSport.Services.HiveManagement
         /// <param name="deletedStatus">Status.</param>
         /// <returns>A <see cref="Task"/>.</returns>
         Task SetStatusAsync(int hiveSectionId, bool deletedStatus);
+
+        /// <summary>
+        /// Gets a list of hive section categories.
+        /// </summary>
+        /// <param name="hiveSectionId">A hive identifier.</param>
+        /// <returns>A <see cref="Task"/>.</returns>
+        Task<List<ProductCategoryListItem>> GetHiveSectionCategoriesAsync(int hiveSectionId);
+
+        /// <summary>
+        /// Gets a list of hive section categoru products.
+        /// </summary>
+        /// <param name="hiveSectionId">A hive identifier.</param>
+        /// <param name="categoryId">A category identifier</param>
+        /// <returns>A <see cref="Task"/>.</returns>
+        Task<List<ProductListItem>> GetHiveSectionCategoryProductsAsync(int hiveSectionId, int categoryId);
     }
 }

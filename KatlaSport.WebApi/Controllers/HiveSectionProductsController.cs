@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using KatlaSport.Services.HiveSectionManagement;
-using KatlaSport.Services.ProductManagement;
 using KatlaSport.WebApi.CustomFilters;
 using Microsoft.Web.Http;
 using Swashbuckle.Swagger.Annotations;
@@ -12,39 +12,39 @@ using Swashbuckle.Swagger.Annotations;
 namespace KatlaSport.WebApi.Controllers
 {
     [ApiVersion("1.0")]
-    [RoutePrefix("api/section")]
+    [RoutePrefix("api/product")]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [CustomExceptionFilter]
     [SwaggerResponseRemoveDefaults]
     public class HiveSectionProductsController : ApiController
     {
-        private readonly IHiveSectionProductsService _hiveSectionCategoryService;
+        private readonly IHiveSectionProductsService _hiveSectionProductsService;
 
         public HiveSectionProductsController(IHiveSectionProductsService hiveSectionCategoryService)
         {
-            _hiveSectionCategoryService = hiveSectionCategoryService ?? throw new ArgumentNullException(nameof(hiveSectionCategoryService));
+            _hiveSectionProductsService = hiveSectionCategoryService ?? throw new ArgumentNullException(nameof(hiveSectionCategoryService));
         }
 
-        [HttpGet]
-        [Route("{hiveSectionId:int:min(1)}/categories")]
-        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a hive section categories.", Type = typeof(ProductCategoryListItem))]
+        [HttpPut]
+        [Route("{storeItemId:int:min(1)}/approvedStatus/{approvedStatus:bool}")]
+        [SwaggerResponse(HttpStatusCode.NoContent, Description = "Sets deleted status for an existed hive.")]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> GetHiveSectionCategories([FromUri] int hiveSectionId)
+        public async Task<IHttpActionResult> SetApprovedStatusAsync([FromUri] int storeItemId, [FromUri] bool approvedStatus)
         {
-            var categories = await _hiveSectionCategoryService.GetHiveSectionCategoriesAsync(hiveSectionId);
-            return Ok(categories);
+            await _hiveSectionProductsService.SetApprovedStatusAsync(storeItemId, approvedStatus);
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
         }
 
-        [HttpGet]
-        [Route("{hiveSectionId:int:min(1)}/category/{categoryId:int:min(1)}")]
-        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a hive section products.", Type = typeof(ProductListItem))]
+        [HttpPut]
+        [Route("{hiveId:int:min(1)}/deletedStatus/{deletedStatus:bool}")]
+        [SwaggerResponse(HttpStatusCode.NoContent, Description = "Sets deleted status for an existed hive.")]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> GetHiveSectionCategoryProducts([FromUri] int hiveSectionId, [FromUri] int categoryId)
+        public async Task<IHttpActionResult> SetDeletedStatusAsync([FromUri] int hiveId, [FromUri] bool deletedStatus)
         {
-            var categories = await _hiveSectionCategoryService.GetHiveSectionCategoryProductsAsync(hiveSectionId, categoryId);
-            return Ok(categories);
+            await _hiveSectionProductsService.SetDeletedStatusAsync(hiveId, deletedStatus);
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
         }
     }
 }
