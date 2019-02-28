@@ -73,10 +73,15 @@
     <Compile Include="Migrations\201901222132181_AddProductDescriptionManCodePrice.Designer.cs">
       <DependentUpon>201901222132181_AddProductDescriptionManCodePrice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902281542501_AddStoreItemIsApprovedAndIsDeleted.cs" />
+    <Compile Include="Migrations\201902281542501_AddStoreItemIsApprovedAndIsDeleted.Designer.cs">
+      <DependentUpon>201902281542501_AddStoreItemIsApprovedAndIsDeleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="stylecop.json" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
@@ -91,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901222132181_AddProductDescriptionManCodePrice.resx">
       <DependentUpon>201901222132181_AddProductDescriptionManCodePrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902281542501_AddStoreItemIsApprovedAndIsDeleted.resx">
+      <DependentUpon>201902281542501_AddStoreItemIsApprovedAndIsDeleted.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
