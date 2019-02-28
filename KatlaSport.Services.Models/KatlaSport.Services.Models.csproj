@@ -76,6 +76,8 @@
     <Compile Include="HiveManagement\UpdateHiveRequestValidator.cs" />
     <Compile Include="HiveManagement\UpdateHiveSectionRequest.cs" />
     <Compile Include="HiveManagement\UpdateHiveSectionRequestValidator.cs" />
+    <Compile Include="HiveSectionManagement\HiveSectionStoreItem.cs" />
+    <Compile Include="HiveSectionManagement\IHiveSectionProductsService.cs" />
     <Compile Include="ProductManagement\IProductCatalogueService.cs" />
     <Compile Include="ProductManagement\IProductCategoryService.cs" />
     <Compile Include="ProductManagement\Product.cs" />
