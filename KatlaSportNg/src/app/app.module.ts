@@ -9,6 +9,7 @@ import { HiveFormComponent } from 'app/hive-management/forms/hive-form.component
 import { HiveSectionFormComponent } from 'app/hive-management/forms/hive-section-form.component';
 import { HiveListComponent } from 'app/hive-management/lists/hive-list.component';
 import { HiveSectionListComponent } from 'app/hive-management/lists/hive-section-list.component';
+import { HiveSectionCategoriesListComponent } from 'app/hive-management/lists/hive-section-categories-list.component';
 import { HiveSectionService } from 'app/hive-management/services/hive-section.service';
 import { HiveService } from 'app/hive-management/services/hive.service';
 import { MainPageComponent } from 'app/main-page/main-page.component';
@@ -33,6 +34,7 @@ import { ProductService } from 'app/product-management/services/product.service'
     HiveFormComponent,
     HiveSectionFormComponent,
     HiveSectionListComponent,
+    HiveSectionCategoriesListComponent,
   ],
   imports: [
     // Angular imports
