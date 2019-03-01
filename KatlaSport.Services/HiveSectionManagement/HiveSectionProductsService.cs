@@ -22,11 +22,9 @@ namespace KatlaSport.Services.HiveSectionManagement
         /// <inheritdoc/>
         public async Task AddHiveSectionCategoryProductAsync(UpdateHiveSectionCategoryProduct createRequest)
         {
-            //It will be good to check if this object joined to category of hive section
-
             StoreItem newItem = new StoreItem();
 
-            newItem.Id = _context.Items.Max(i => i.Id) + 1; //??
+            newItem.Id = _context.Items.Max(i => i.Id) + 1;
             newItem.ProductId = createRequest.Id;
             newItem.Quantity = createRequest.Quantity;
             newItem.HiveSectionId = createRequest.HiveSectionId;
@@ -70,6 +68,7 @@ namespace KatlaSport.Services.HiveSectionManagement
             await _context.SaveChangesAsync();
         }
 
+        /// <inheritdoc/>
         public async Task DeleteHiveSectionCategoryProductAsync(int storeItemId)
         {
             var dbStoreItems = await _context.Items.Where(s => s.Id == storeItemId).ToArrayAsync();
