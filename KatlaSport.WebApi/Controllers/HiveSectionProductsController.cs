@@ -64,5 +64,18 @@ namespace KatlaSport.WebApi.Controllers
             await _hiveSectionProductsService.SetDeletedStatusAsync(hiveId, deletedStatus);
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
         }
+
+        [HttpDelete]
+        [Route("{storeItemId:int:min(1)}")]
+        [SwaggerResponse(HttpStatusCode.NoContent, Description = "Deletes an existed hive section.")]
+        [SwaggerResponse(HttpStatusCode.BadRequest)]
+        [SwaggerResponse(HttpStatusCode.Conflict)]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
+        [SwaggerResponse(HttpStatusCode.InternalServerError)]
+        public async Task<IHttpActionResult> DeleteHiveSectionCategoryProduct([FromUri] int storeItemId)
+        {
+            await _hiveSectionProductsService.DeleteHiveSectionCategoryProductAsync(storeItemId);
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
+        }
     }
 }

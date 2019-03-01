@@ -69,5 +69,26 @@ namespace KatlaSport.Services.HiveSectionManagement
 
             await _context.SaveChangesAsync();
         }
+
+        public async Task DeleteHiveSectionCategoryProductAsync(int storeItemId)
+        {
+            var dbStoreItems = await _context.Items.Where(s => s.Id == storeItemId).ToArrayAsync();
+
+            if (dbStoreItems.Length == 0)
+            {
+                throw new RequestedResourceNotFoundException();
+            }
+
+            var dbStoreItem = dbStoreItems[0];
+
+            if (dbStoreItem.IsDeleted == false)
+            {
+                throw new RequestedResourceHasConflictException();
+            }
+
+            _context.Items.Remove(dbStoreItem);
+
+            await _context.SaveChangesAsync();
+        }
     }
 }

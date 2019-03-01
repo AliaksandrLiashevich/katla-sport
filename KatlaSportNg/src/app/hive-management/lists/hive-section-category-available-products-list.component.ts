@@ -35,7 +35,7 @@ export class HiveSectionCategoryAvailableProductsListComponent implements OnInit
 
   onRequest(product: HiveSectionCategoryAvailableProduct) {
       product.hiveSectionId = this.hiveSectionId;
-      if(product.quantity == null) product.quantity = this.defaultProductQuantity;
+      if(product.quantity == null || product.quantity < 0) product.quantity = this.defaultProductQuantity;
       this.hiveSectionService.addHiveSectionCategoryProduct(product).subscribe();
       window.location.reload();
   }

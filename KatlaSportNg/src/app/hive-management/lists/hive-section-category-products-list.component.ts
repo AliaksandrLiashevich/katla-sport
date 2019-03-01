@@ -18,7 +18,8 @@ export class HiveSectionCategoryProductsListComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private hiveSectionService: HiveSectionService
-  ) { }
+  ) { 
+  }
 
   ngOnInit() {
     this.route.params.subscribe(p => {
@@ -28,5 +29,30 @@ export class HiveSectionCategoryProductsListComponent implements OnInit {
       this.hiveSectionService.getHiveSectionCategoryProducts(this.hiveSectionId, this.hiveSectionCategoryId)
         .subscribe(s => this.hiveSectionCategoryProducts = s);
     })
+  }
+
+  onApproved(hiveSectionCategoryProductId: number) {
+    var hiveSectionCategoryProduct = this.hiveSectionCategoryProducts.find(s => s.id == hiveSectionCategoryProductId);    
+    this.hiveSectionService.setHiveSectionCategoryProductApprovedStatus(hiveSectionCategoryProductId, true).subscribe(c => hiveSectionCategoryProduct.isApproved = true);
+  }
+
+  onDeny(hiveSectionCategoryProductId: number) {
+    this.hiveSectionCategoryProducts = this.hiveSectionCategoryProducts.filter(s => s.id != hiveSectionCategoryProductId || s.isDeleted == false);
+    this.hiveSectionService.deleteHiveSectionCategoryProduct(hiveSectionCategoryProductId).subscribe();
+  }
+
+  onDelete(hiveSectionCategoryProductId: number) {
+    var hiveSectionCategoryProduct = this.hiveSectionCategoryProducts.find(s => s.id == hiveSectionCategoryProductId);    
+    this.hiveSectionService.setHiveSectionCategoryProductDeletedStatus(hiveSectionCategoryProductId, true).subscribe(c => hiveSectionCategoryProduct.isDeleted = true);
+  }
+
+  onRestore(hiveSectionCategoryProductId: number){
+    var hiveSectionCategoryProduct = this.hiveSectionCategoryProducts.find(s => s.id == hiveSectionCategoryProductId);
+    this.hiveSectionService.setHiveSectionCategoryProductDeletedStatus(hiveSectionCategoryProductId, false).subscribe(c => hiveSectionCategoryProduct.isDeleted = false);
+  }
+
+  onPurge(hiveSectionCategoryProductId: number){
+    this.hiveSectionCategoryProducts = this.hiveSectionCategoryProducts.filter(s => s.id != hiveSectionCategoryProductId || s.isDeleted == false);
+    this.hiveSectionService.deleteHiveSectionCategoryProduct(hiveSectionCategoryProductId).subscribe();
   }
 }
