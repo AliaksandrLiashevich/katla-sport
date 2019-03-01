@@ -120,7 +120,7 @@ namespace KatlaSport.WebApi.Controllers
 
         [HttpGet]
         [Route("{hiveSectionId:int:min(1)}/category/{categoryId:int:min(1)}/products")]
-        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a hive section products.", Type = typeof(ProductListItem))]
+        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a hive section products.", Type = typeof(HiveSectionProduct))]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetHiveSectionCategoryProducts([FromUri] int hiveSectionId, [FromUri] int categoryId)
@@ -131,19 +131,13 @@ namespace KatlaSport.WebApi.Controllers
 
         [HttpGet]
         [Route("{hiveSectionId:int:min(1)}/category/{categoryId:int:min(1)}/avaliableProducts")]
-        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns avaliable hive section category products.", Type = typeof(ProductListItem))]
+        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns avaliable hive section category products.", Type = typeof(ProductCategoryProductListItem))]
         [SwaggerResponse(HttpStatusCode.NoContent, Description = "Category doesn't contain avaliable products")]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetAvaliableHiveSectionCategoryProducts([FromUri] int hiveSectionId, [FromUri] int categoryId)
         {
             var categories = await _hiveSectionService.GetHiveSectionCategoryAvailableProductsAsync(hiveSectionId, categoryId);
-
-            if (categories == null)
-            {
-                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
-            }
-
             return Ok(categories);
         }
     }
