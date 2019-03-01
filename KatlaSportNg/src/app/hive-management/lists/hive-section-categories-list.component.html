@@ -1,0 +1,27 @@
+<div class="container">
+    <h2>Hive Section Categories List</h2>
+    <table class="table table-nonfluid">
+      <thead>
+        <th scope="col">#</th>
+        <th scope="col">Code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Products</th>
+        <th scope="col"></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hiveSectionCategory of hiveSectionCategories">
+          <th scope="row">{{hiveSectionCategory.id}}</th>
+          <td>{{hiveSectionCategory.code}}</td>
+          <td>{{hiveSectionCategory.name}}</td>
+          <td>{{hiveSectionCategory.productCount}}</td>
+          <td>  
+          <span class="btn-toolbar" role="toolbar" aria-label="Product category action buttons" style="display: block; white-space:nowrap;">
+              <div class="btn-group mr-1" role="group" aria-label="View group">
+                <button routerLink="{{hiveSectionId}}/category/{{hiveSectionCategory.id}}/products" type="button" class="btn btn-primary">View category products</button>
+              </div>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
