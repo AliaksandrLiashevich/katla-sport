@@ -72,7 +72,7 @@ namespace KatlaSport.Services.HiveManagement
         /// <param name="hiveSectionId">A hive identifier.</param>
         /// <param name="categoryId">A category identifier</param>
         /// <returns>A <see cref="Task"/>.</returns>
-        Task<List<ProductListItem>> GetHiveSectionCategoryProductsAsync(int hiveSectionId, int categoryId);
+        Task<List<HiveSectionProduct>> GetHiveSectionCategoryProductsAsync(int hiveSectionId, int categoryId);
 
         /// <summary>
         /// Gets a list of avaliable hive section categoru products.
@@ -80,6 +80,6 @@ namespace KatlaSport.Services.HiveManagement
         /// <param name="hiveSectionId">A hive identifier.</param>
         /// <param name="categoryId">A category identifier</param>
         /// <returns>A <see cref="Task"/>.</returns>
-        Task<List<ProductListItem>> GetHiveSectionCategoryAvailableProductsAsync(int hiveSectionId, int categoryId);
+        Task<List<ProductCategoryProductListItem>> GetHiveSectionCategoryAvailableProductsAsync(int hiveSectionId, int categoryId);
     }
 }

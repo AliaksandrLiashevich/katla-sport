@@ -25,6 +25,9 @@ namespace KatlaSport.Services.ProductManagement
 
             CreateMap<UpdateProductRequest, DataAccessProduct>()
                 .ForMember(r => r.LastUpdated, opt => opt.MapFrom(p => DateTime.UtcNow));
+
+            CreateMap<DataAccessProduct, HiveSectionProduct>()
+                .ForMember(hsp => hsp.ProductId, opt => opt.MapFrom(p => p.Id));
         }
     }
 }
