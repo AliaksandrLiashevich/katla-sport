@@ -10,6 +10,7 @@ import { HiveSectionCategory } from '../models/hive-section-categorie';
 })
 export class HiveSectionCategoriesListComponent implements OnInit {
 
+  hiveId: number;
   hiveSectionId: number;
   hiveSectionCategories: HiveSectionCategory[];
 
@@ -20,7 +21,8 @@ export class HiveSectionCategoriesListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(p => {
-      this.hiveSectionId = p['id'];
+      this.hiveId = p['hiveId'];
+      this.hiveSectionId = p['hiveSectionId'];
       this.hiveSectionService.getHiveSectionCategories(this.hiveSectionId).subscribe(s => this.hiveSectionCategories = s);
     })
   }
