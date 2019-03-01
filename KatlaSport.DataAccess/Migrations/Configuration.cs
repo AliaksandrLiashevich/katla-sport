@@ -77,6 +77,36 @@ namespace KatlaSport.DataAccess.Migrations
                     CreatedBy = creatorId,
                     LastUpdatedBy = creatorId,
                     LastUpdated = timestamp
+                },
+                new ProductCategory
+                {
+                    Id = 4,
+                    Name = "Martial arts",
+                    Code = "MARAT",
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp
+                },
+                new ProductCategory
+                {
+                    Id = 5,
+                    Name = "Fitness",
+                    Code = "FITSS",
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp
+                },
+                new ProductCategory
+                {
+                    Id = 6,
+                    Name = "Weightlifting",
+                    Code = "WGTLF",
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp
                 });
 
             context.CatalogueProducts.AddOrUpdate(
@@ -96,6 +126,66 @@ namespace KatlaSport.DataAccess.Migrations
                 new CatalogueProduct
                 {
                     Id = 2,
+                    Name = "Adidas",
+                    Code = "ADDD1",
+                    CategoryId = 1,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 3,
+                    Name = "Reebok",
+                    Code = "RBK12",
+                    CategoryId = 1,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 4,
+                    Name = "Icebug",
+                    Code = "ICBG1",
+                    CategoryId = 1,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 5,
+                    Name = "La Sportiva",
+                    Code = "LSPRT",
+                    CategoryId = 1,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 6,
+                    Name = "Mizuno",
+                    Code = "MZN45",
+                    CategoryId = 1,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 7,
                     Name = "Top-top Men Shoes",
                     Code = "TTME1",
                     CategoryId = 1,
@@ -107,7 +197,7 @@ namespace KatlaSport.DataAccess.Migrations
                 },
                 new CatalogueProduct
                 {
-                    Id = 3,
+                    Id = 8,
                     Name = "Abibas T-Shirt",
                     Code = "ABIT1",
                     CategoryId = 2,
@@ -119,10 +209,202 @@ namespace KatlaSport.DataAccess.Migrations
                 },
                 new CatalogueProduct
                 {
-                    Id = 4,
-                    Name = "Pedali 360 Bicycle",
-                    Code = "PBYC1",
+                    Id = 9,
+                    Name = "Katla Shirt",
+                    Code = "KTLSH",
+                    CategoryId = 2,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 10,
+                    Name = "Brakes",
+                    Code = "BRKS1",
                     CategoryId = 3,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 11,
+                    Name = "Drivetrain",
+                    Code = "DRVTR",
+                    CategoryId = 3,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 12,
+                    Name = "Fork",
+                    Code = "FRK10",
+                    CategoryId = 3,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 13,
+                    Name = "Tyres",
+                    Code = "TRSS1",
+                    CategoryId = 3,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 14,
+                    Name = "Kimono",
+                    Code = "KMNN1",
+                    CategoryId = 4,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 15,
+                    Name = "Boxing gloves",
+                    Code = "BXNGG",
+                    CategoryId = 4,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 16,
+                    Name = "Black belt",
+                    Code = "BLCKB",
+                    CategoryId = 4,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 17,
+                    Name = "Boxing helmet",
+                    Code = "BXHLM",
+                    CategoryId = 4,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 18,
+                    Name = "Fitness mat",
+                    Code = "FTM23",
+                    CategoryId = 5,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 19,
+                    Name = "Hoop",
+                    Code = "HOOP1",
+                    CategoryId = 5,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 20,
+                    Name = "Fitball",
+                    Code = "FBL36",
+                    CategoryId = 5,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 21,
+                    Name = "Jump rope",
+                    Code = "JMRP3",
+                    CategoryId = 5,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 22,
+                    Name = "Barbell",
+                    Code = "BRB8L",
+                    CategoryId = 6,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 23,
+                    Name = "Weight",
+                    Code = "WHT38",
+                    CategoryId = 6,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 24,
+                    Name = "Expander",
+                    Code = "XPNDR",
+                    CategoryId = 6,
+                    IsDeleted = false,
+                    CreatedBy = creatorId,
+                    LastUpdatedBy = creatorId,
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "1"
+                },
+                new CatalogueProduct
+                {
+                    Id = 25,
+                    Name = "Rope",
+                    Code = "RP563",
+                    CategoryId = 6,
                     IsDeleted = false,
                     CreatedBy = creatorId,
                     LastUpdatedBy = creatorId,
