@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using KatlaSport.Services.ProductManagement;
 
 namespace KatlaSport.Services.HiveSectionManagement
 {
@@ -19,5 +20,12 @@ namespace KatlaSport.Services.HiveSectionManagement
         /// <param name="deletedStatus">bool value</param>
         /// <returns>A <see cref="Task"/></returns>
         Task SetDeletedStatusAsync(int storeItemId, bool deletedStatus);
+
+        /// <summary>
+        /// Add new product to hive section category
+        /// </summary>
+        /// <param name="createRequest">Product info</param>
+        /// <returns>A <see cref="Task"/></returns>>
+        Task AddHiveSectionCategoryProductAsync(UpdateHiveSectionCategoryProduct createRequest);
     }
 }

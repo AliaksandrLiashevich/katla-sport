@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using KatlaSport.DataAccess;
 using KatlaSport.DataAccess.ProductStore;
+using KatlaSport.Services.ProductManagement;
 
 namespace KatlaSport.Services.HiveSectionManagement
 {
@@ -16,6 +17,23 @@ namespace KatlaSport.Services.HiveSectionManagement
         public HiveSectionProductsService(IProductStoreContext context)
         {
             _context = context;
+        }
+
+        /// <inheritdoc/>
+        public async Task AddHiveSectionCategoryProductAsync(UpdateHiveSectionCategoryProduct createRequest)
+        {
+            //It will be good to check if this object joined to category of hive section
+
+            StoreItem newItem = new StoreItem();
+
+            newItem.Id = _context.Items.Max(i => i.Id) + 1; //??
+            newItem.ProductId = createRequest.Id;
+            newItem.Quantity = createRequest.Quantity;
+            newItem.HiveSectionId = createRequest.HiveSectionId;
+
+            _context.Items.Add(newItem);
+
+            await _context.SaveChangesAsync();
         }
 
         /// <inheritdoc/>

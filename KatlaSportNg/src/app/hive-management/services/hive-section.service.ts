@@ -40,6 +40,10 @@ export class HiveSectionService {
     return this.http.post<HiveSection>(this.url, hiveSection);
   }
 
+  addHiveSectionCategoryProduct(product: HiveSectionCategoryAvailableProduct): Observable<HiveSectionCategoryAvailableProduct> {
+    return this.http.post<HiveSectionCategoryAvailableProduct>(`${environment.apiUrl}api/product`, product);
+  }
+
   updateHiveSection(hiveSection: HiveSection): Observable<Object> {
     return this.http.put(`${this.url}${hiveSection.id}`, hiveSection);
   }

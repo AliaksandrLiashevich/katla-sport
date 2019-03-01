@@ -13,12 +13,15 @@ export class HiveSectionCategoryAvailableProductsListComponent implements OnInit
   hiveId: number;
   hiveSectionId: number;
   hiveSectionCategoryId: number;
+  defaultProductQuantity: number;
   hiveSectionCategoryAvailableProducts: HiveSectionCategoryAvailableProduct[];
 
   constructor(
     private route: ActivatedRoute,
     private hiveSectionService: HiveSectionService
-  ) { }
+  ) { 
+    this.defaultProductQuantity = 10;
+  }
 
   ngOnInit() {
     this.route.params.subscribe(p => {
@@ -28,5 +31,12 @@ export class HiveSectionCategoryAvailableProductsListComponent implements OnInit
       this.hiveSectionService.getHiveSectionAvailableCategoryProducts(this.hiveSectionId, this.hiveSectionCategoryId)
         .subscribe(s => this.hiveSectionCategoryAvailableProducts = s);
     })
+  }
+
+  onRequest(product: HiveSectionCategoryAvailableProduct) {
+      product.hiveSectionId = this.hiveSectionId;
+      if(product.quantity == null) product.quantity = this.defaultProductQuantity;
+      this.hiveSectionService.addHiveSectionCategoryProduct(product).subscribe();
+      window.location.reload();
   }
 }

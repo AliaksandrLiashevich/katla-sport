@@ -86,10 +86,12 @@
     <Compile Include="ProductManagement\ProductCategoryListItem.cs" />
     <Compile Include="ProductManagement\ProductCategoryProductListItem.cs" />
     <Compile Include="ProductManagement\ProductListItem.cs" />
+    <Compile Include="ProductManagement\UpdateHiveSectionCategoryProduct.cs" />
     <Compile Include="ProductManagement\UpdateProductCategoryRequest.cs" />
     <Compile Include="ProductManagement\UpdateProductCategoryRequestValidator.cs" />
     <Compile Include="ProductManagement\UpdateProductRequest.cs" />
     <Compile Include="ProductManagement\UpdateProductRequestValidator.cs" />
+    <Compile Include="ProductManagement\UpdateHiveSectionCategoryProductValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
