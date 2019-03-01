@@ -1,0 +1,34 @@
+<div class="container">
+    <h2>Hive Section Category Available Products</h2>
+    <table class="table table-nonfluid">
+      <thead>
+        <th scope="col">#</th>
+        <th scope="col">Code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col"></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hiveSectionCategoryAvailableProduct of hiveSectionCategoryAvailableProducts">
+          <th scope="row">{{hiveSectionCategoryAvailableProduct.id}}</th>
+          <td>{{hiveSectionCategoryAvailableProduct.code}}</td>
+          <td>{{hiveSectionCategoryAvailableProduct.name}}</td>
+          <td>
+            <input type="number" class="form-control" id="quantity" minlength="1" maxlength="6" required [(ngModel)]="hiveSectionCategoryAvailableProduct.quantity"
+              name="quantity" #quantity="ngModel">
+          </td>
+          <td>
+            <div class="btn-group mr-1" role="group" aria-label="Request group">
+              <button type="button" class="btn btn-success" (click)="onRequest(hiveSectionCategoryAvailableProduct)">Make a request</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="btn-toolbar" role="toolbar" aria-label="Action buttons">
+      <div class="btn-group" role="group" aria-label="Back group">
+        <button routerLink="/hive/{{hiveId}}/section/{{hiveSectionId}}/categories" type="button" class="btn btn-primary">Back</button>
+      </div>
+    </div>
+  </div>
+  

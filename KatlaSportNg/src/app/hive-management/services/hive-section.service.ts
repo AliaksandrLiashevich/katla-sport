@@ -6,6 +6,7 @@ import { HiveSection } from '../models/hive-section';
 import { HiveSectionListItem } from '../models/hive-section-list-item';
 import { HiveSectionCategory } from '../models/hive-section-categorie';
 import { HiveSectionCategoryProduct } from '../models/hive-section-category-product';
+import { HiveSectionCategoryAvailableProduct } from '../models/hive-section-category-available-product';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,16 @@ export class HiveSectionService {
     return this.http.get<Array<HiveSectionCategoryProduct>>(`${this.url}${hiveSectionId}/category/${categoryId}/products`);
   }
 
+  getHiveSectionAvailableCategoryProducts(hiveSectionId: number, categoryId: number): Observable<Array<HiveSectionCategoryAvailableProduct>>{
+    return this.http.get<Array<HiveSectionCategoryAvailableProduct>>(`${this.url}${hiveSectionId}/category/${categoryId}/avaliableProducts`);
+  }
+
   addHiveSection(hiveSection: HiveSection): Observable<HiveSection> {
     return this.http.post<HiveSection>(this.url, hiveSection);
+  }
+
+  addHiveSectionCategoryProduct(product: HiveSectionCategoryAvailableProduct): Observable<HiveSectionCategoryAvailableProduct> {
+    return this.http.post<HiveSectionCategoryAvailableProduct>(`${environment.apiUrl}api/product`, product);
   }
 
   updateHiveSection(hiveSection: HiveSection): Observable<Object> {

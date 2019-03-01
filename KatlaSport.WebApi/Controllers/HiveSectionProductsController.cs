@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using KatlaSport.Services.HiveSectionManagement;
+using KatlaSport.Services.ProductManagement;
 using KatlaSport.WebApi.CustomFilters;
 using Microsoft.Web.Http;
 using Swashbuckle.Swagger.Annotations;
@@ -23,6 +24,23 @@ namespace KatlaSport.WebApi.Controllers
         public HiveSectionProductsController(IHiveSectionProductsService hiveSectionCategoryService)
         {
             _hiveSectionProductsService = hiveSectionCategoryService ?? throw new ArgumentNullException(nameof(hiveSectionCategoryService));
+        }
+
+        [HttpPost]
+        [Route("")]
+        [SwaggerResponse(HttpStatusCode.Created, Description = "Creates a new hive section category product.")]
+        [SwaggerResponse(HttpStatusCode.BadRequest)]
+        [SwaggerResponse(HttpStatusCode.Conflict)]
+        [SwaggerResponse(HttpStatusCode.InternalServerError)]
+        public async Task<IHttpActionResult> AddHiveSectionCategoryProduct([FromBody] UpdateHiveSectionCategoryProduct createRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _hiveSectionProductsService.AddHiveSectionCategoryProductAsync(createRequest);
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
         }
 
         [HttpPut]
