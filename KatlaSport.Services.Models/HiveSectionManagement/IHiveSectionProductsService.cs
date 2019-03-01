@@ -25,7 +25,14 @@ namespace KatlaSport.Services.HiveSectionManagement
         /// Add new product to hive section category
         /// </summary>
         /// <param name="createRequest">Product info</param>
-        /// <returns>A <see cref="Task"/></returns>>
+        /// <returns>A <see cref="Task"/></returns>
         Task AddHiveSectionCategoryProductAsync(UpdateHiveSectionCategoryProduct createRequest);
+
+        /// <summary>
+        /// Delete hive section category product
+        /// </summary>
+        /// <param name="storeItemId">Product identifier</param>
+        /// <returns>A <see cref="Task"/></returns>
+        Task DeleteHiveSectionCategoryProductAsync(int storeItemId);
     }
 }

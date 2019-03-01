@@ -5,7 +5,7 @@ namespace KatlaSport.Services.ProductManagement
     /// <summary>
     /// Represents a validator for <see cref="UpdateHiveSectionCategoryProduct"/>.
     /// </summary>
-    public class UpdateHiveSectionCategoryProductValidator: AbstractValidator<UpdateHiveSectionCategoryProduct>
+    public class UpdateHiveSectionCategoryProductValidator : AbstractValidator<UpdateHiveSectionCategoryProduct>
     {
         public UpdateHiveSectionCategoryProductValidator()
         {

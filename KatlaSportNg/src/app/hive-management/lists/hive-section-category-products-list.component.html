@@ -14,6 +14,28 @@
           <td>{{hiveSectionCategoryProduct.code}}</td>
           <td>{{hiveSectionCategoryProduct.name}}</td>
           <td>{{hiveSectionCategoryProduct.quantity}}</td>
+          <td>
+            <div *ngIf="!hiveSectionCategoryProduct.isApproved; then adminTools else userTools"></div>
+            <ng-template #adminTools>
+              <div class="btn-group mr-1" role="approve" aria-label="approve group">
+                 <button type="button" class="btn btn-primary" (click)="onApproved(hiveSectionCategoryProduct.id)">Approve</button>
+              </div>
+              <div class="btn-group" role="deny" aria-label="deny group">
+                 <button type="button" class="btn btn-danger" (click)="onDeny(hiveSectionCategoryProduct.id)">Deny</button>
+              </div>
+            </ng-template> 
+            <ng-template #userTools>
+              <div *ngIf="!hiveSectionCategoryProduct.isDeleted" class="btn-group mr-1" role="delete" aria-label="delete group">
+                   <button type="button" class="btn btn-warning" (click)="onDelete(hiveSectionCategoryProduct.id)">Delete</button>
+              </div>
+              <div *ngIf="hiveSectionCategoryProduct.isDeleted" class="btn-group mr-1" role="restore" aria-label="restore group">
+                  <button type="button" class="btn btn-success" (click)="onRestore(hiveSectionCategoryProduct.id)">Restore</button>
+              </div>
+              <div class="btn-group mr-1" role="purge" aria-label="purge group">
+                 <button type="button" class="btn btn-danger" (click)="onPurge(hiveSectionCategoryProduct.id)">Purge</button>
+              </div>
+            </ng-template>             
+          </td>
         </tr>
       </tbody>
     </table>

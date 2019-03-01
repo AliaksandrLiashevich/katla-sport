@@ -55,4 +55,17 @@ export class HiveSectionService {
   setHiveSectionStatus(hiveSectionId: number, deletedStatus: boolean): Observable<Object> {
     return this.http.put(`${this.url}${hiveSectionId}/status/${deletedStatus}`, null);
   }
+
+  setHiveSectionCategoryProductApprovedStatus(hiveSectionCategoryProductId: number, deletedStatus: boolean): Observable<Object> {
+    return this.http.put(`${environment.apiUrl}api/product/${hiveSectionCategoryProductId}/approvedStatus/${deletedStatus}`, null);
+  }
+
+  setHiveSectionCategoryProductDeletedStatus(hiveSectionCategoryProductId: number, deletedStatus: boolean): Observable<Object> {
+    return this.http.put(`${environment.apiUrl}api/product/${hiveSectionCategoryProductId}/deletedStatus/${deletedStatus}`, null);
+  }
+
+  deleteHiveSectionCategoryProduct(hiveSectionCategoryProductId: number): Observable<Object> {
+    console.log("Hie");
+    return this.http.delete(`${environment.apiUrl}api/product/${hiveSectionCategoryProductId}`);
+  }
 }
