@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HiveSectionService } from '../services/hive-section.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HiveSection } from '../models/hive-section';
 import { HiveService } from '../services/hive.service';
+import { HiveSectionService } from '../services/hive-section.service';
 import { HiveListItem } from '../models/hive-list-item';
-import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-hive-section-form',
@@ -12,9 +11,10 @@ import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
   styleUrls: ['./hive-section-form.component.css']
 })
 export class HiveSectionFormComponent implements OnInit {
-  hiveSection = new HiveSection(0,'','',0,false,'');
+  hiveSection: HiveSection;
   hives: HiveListItem[];
-  storeHiveId:number;
+  hiveId: number;
+  hiveSectionId:number;
   existed = false;
 
   constructor(
@@ -27,23 +27,14 @@ export class HiveSectionFormComponent implements OnInit {
   ngOnInit() {
     this.hiveService.getHives().subscribe(h => this.hives = h);
     this.route.params.subscribe(p => {
-      this.storeHiveId = toInteger(p['storeHiveId']);
-      if(p['id'] === undefined) {
-        this.hiveSection.storeHiveId = this.storeHiveId;
-      } else {
-        this.hiveSectionService.getHiveSection(p['id']).subscribe(hs => {
-          this.hiveSection = hs;
-          if(isNaN(this.storeHiveId)){
-            this.storeHiveId = hs.storeHiveId;
-          }
-        });
-        this.existed = true;
-      }
+      this.hiveId = p['hiveId'];
+      this.hiveSectionId = p['hiveSectionId'];
     });
+    this.hiveSectionService.getHiveSection(this.hiveSectionId).subscribe(s => this.hiveSection = s);
   }
 
   navigateToHivesSections() {
-    this.router.navigate([`/hive/${this.storeHiveId}/sections`]);
+    this.router.navigate([`/hive/${this.hiveId}/sections`]);
   }
 
   onCancel() {
