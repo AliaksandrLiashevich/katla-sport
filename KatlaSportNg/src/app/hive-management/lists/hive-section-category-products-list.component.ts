@@ -37,8 +37,8 @@ export class HiveSectionCategoryProductsListComponent implements OnInit {
   }
 
   onDeny(hiveSectionCategoryProductId: number) {
-    this.hiveSectionCategoryProducts = this.hiveSectionCategoryProducts.filter(s => s.id != hiveSectionCategoryProductId || s.isDeleted == false);
-    this.hiveSectionService.deleteHiveSectionCategoryProduct(hiveSectionCategoryProductId).subscribe();
+    this.onDelete(hiveSectionCategoryProductId);
+    this.onPurge(hiveSectionCategoryProductId);
   }
 
   onDelete(hiveSectionCategoryProductId: number) {

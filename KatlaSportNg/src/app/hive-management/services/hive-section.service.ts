@@ -65,7 +65,6 @@ export class HiveSectionService {
   }
 
   deleteHiveSectionCategoryProduct(hiveSectionCategoryProductId: number): Observable<Object> {
-    console.log("Hie");
     return this.http.delete(`${environment.apiUrl}api/product/${hiveSectionCategoryProductId}`);
   }
 }
