@@ -45,7 +45,7 @@ namespace KatlaSport.WebApi.Controllers
 
         [HttpPut]
         [Route("{storeItemId:int:min(1)}/approvedStatus/{approvedStatus:bool}")]
-        [SwaggerResponse(HttpStatusCode.NoContent, Description = "Sets deleted status for an existed hive.")]
+        [SwaggerResponse(HttpStatusCode.NoContent, Description = "Sets approved status for an existed hive.")]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> SetApprovedStatusAsync([FromUri] int storeItemId, [FromUri] bool approvedStatus)
@@ -67,7 +67,7 @@ namespace KatlaSport.WebApi.Controllers
 
         [HttpDelete]
         [Route("{storeItemId:int:min(1)}")]
-        [SwaggerResponse(HttpStatusCode.NoContent, Description = "Deletes an existed hive section.")]
+        [SwaggerResponse(HttpStatusCode.NoContent, Description = "Deletes an existed hive section category product.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.NotFound)]
