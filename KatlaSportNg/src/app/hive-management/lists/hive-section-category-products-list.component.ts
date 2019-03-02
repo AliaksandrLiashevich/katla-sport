@@ -28,7 +28,7 @@ export class HiveSectionCategoryProductsListComponent implements OnInit {
       this.hiveSectionCategoryId = p['hiveSectionCategoryId'];
       this.hiveSectionService.getHiveSectionCategoryProducts(this.hiveSectionId, this.hiveSectionCategoryId)
         .subscribe(s => this.hiveSectionCategoryProducts = s);
-    })
+    });
   }
 
   onApproved(hiveSectionCategoryProductId: number) {
