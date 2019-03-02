@@ -30,7 +30,10 @@ export class HiveSectionFormComponent implements OnInit {
       this.hiveId = p['hiveId'];
       this.hiveSectionId = p['hiveSectionId'];
     });
-    this.hiveSectionService.getHiveSection(this.hiveSectionId).subscribe(s => this.hiveSection = s);
+    if(this.hiveSectionId != null){
+      this.hiveSectionService.getHiveSection(this.hiveSectionId).subscribe(s => this.hiveSection = s);
+      this.existed = true;
+    }
   }
 
   navigateToHivesSections() {
